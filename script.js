@@ -1,13 +1,14 @@
-const circleOne = document.querySelector(".one")
-const circleTwo = document.querySelector(".two")
-const circleThree = document.querySelector(".three")
-const circleFour = document.querySelector(".four")
-const circleFive = document.querySelector(".five")
-const circleSix = document.querySelector(".six")
-const circleSeven = document.querySelector(".seven")
-const rollDice = document.querySelector(".rollDice")
-
-refresh()
+const circleOne = document.querySelector(".one");
+const circleTwo = document.querySelector(".two");
+const circleThree = document.querySelector(".three");
+const circleFour = document.querySelector(".four");
+const circleFive = document.querySelector(".five");
+const circleSix = document.querySelector(".six");
+const circleSeven = document.querySelector(".seven");
+const rollDice = document.querySelector(".rollDice");
+const currentPointP1 = document.querySelector(".currentScoreP1");
+const currentPointP2 = document.querySelector(".currentScoreP2");
+let currentPointOfCurrentPlayer = currentPointP1;
 
 function refresh() {
     circleOne.style.display = "none"
@@ -19,8 +20,18 @@ function refresh() {
     circleSeven.style.display = "none"
 }
 
+console.log(currentPointOfCurrentPlayer)
+
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function changePlayer(p1, p2) {
+    if (currentPointOfCurrentPlayer == p1) {
+        currentPointOfCurrentPlayer = p2
+    } else if (currentPointOfCurrentPlayer == p2) {
+        currentPointOfCurrentPlayer = p1
+    }
 }
 
 function displayDiceCircle() {
@@ -29,21 +40,26 @@ function displayDiceCircle() {
     if (diceNumber == 1) {
         console.log("1")
         circleFour.style.display = "block"
+        currentPointOfCurrentPlayer.textContent = 0
+        changePlayer(currentPointP1, currentPointP2)
     } else if (diceNumber == 2) {
         console.log("2")
         circleThree.style.display = "block"
         circleFive.style.display = "block"
+        currentPointOfCurrentPlayer.textContent = Number(currentPointOfCurrentPlayer.textContent) + 2
     } else if (diceNumber == 3) {
         console.log("3")
         circleThree.style.display = "block"
         circleFour.style.display = "block"
         circleFive.style.display = "block"
+        currentPointOfCurrentPlayer.textContent = Number(currentPointOfCurrentPlayer.textContent) + 3
     } else if (diceNumber == 4) {
         console.log("4")
         circleOne.style.display = "block"
         circleThree.style.display = "block"
         circleFive.style.display = "block"
         circleSeven.style.display = "block"
+        currentPointOfCurrentPlayer.textContent = Number(currentPointOfCurrentPlayer.textContent) + 4
     } else if (diceNumber == 5) {
         console.log("5")
         circleOne.style.display = "block"
@@ -51,6 +67,7 @@ function displayDiceCircle() {
         circleFour.style.display = "block"
         circleFive.style.display = "block"
         circleSeven.style.display = "block"
+        currentPointOfCurrentPlayer.textContent = Number(currentPointOfCurrentPlayer.textContent) + 5
     } else if (diceNumber == 6) {
         console.log("6")
         circleOne.style.display = "block"
@@ -59,7 +76,9 @@ function displayDiceCircle() {
         circleFive.style.display = "block"
         circleSix.style.display = "block"
         circleSeven.style.display = "block"
+        currentPointOfCurrentPlayer.textContent = Number(currentPointOfCurrentPlayer.textContent) + 6
     }
+    
 }
 
-addEventListener("click", displayDiceCircle) 
+rollDice.addEventListener("click", displayDiceCircle) 

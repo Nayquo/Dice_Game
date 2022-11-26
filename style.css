@@ -80,6 +80,8 @@
     position: absolute;
     left: -100px;
     margin-top: 5%;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
 }
 
 .newGame img, .rollDice img, .hold img {
@@ -161,6 +163,8 @@
     position: absolute;
     left: -100px;
     bottom: 250px;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
 }
 
 .hold {
@@ -168,6 +172,8 @@
     position: absolute;
     left: -70px;
     bottom: 175px;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
 }
 
 
