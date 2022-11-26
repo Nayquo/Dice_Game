@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
 
-*, body, html {
+*,
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
@@ -22,19 +24,51 @@
     float: right;
     width: 50%;
     height: 100vh;
-    background: whitesmoke;
+    background: rgb(245, 245, 245);
 }
 
-.TitleP1, .TitleP2 {
+.TitleP1,
+.TitleP2 {
     position: absolute;
     left: 0;
     right: 0;
     top: 20%;
     text-align: center;
     font-size: 7vh;
+    display: flex;
+    justify-content: center;
 }
 
-.globalScoreP1, .globalScoreP2 {
+.borderAnimation {
+    --border-size: 3px;
+    --border-angle: 0turn;
+    background-image: conic-gradient(from var(--border-angle),
+            rgb(245, 245, 245),
+            rgb(245, 245, 245) 50%,
+            rgb(245, 245, 245)),
+        conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+    background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)),
+        cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    animation: bg-spin 3s linear infinite;
+}
+
+@keyframes bg-spin {
+    to {
+        --border-angle: 1turn;
+    }
+}
+
+@property --border-angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+}
+
+.globalScoreP1,
+.globalScoreP2 {
     color: crimson;
     font-weight: 300;
     position: absolute;
@@ -45,12 +79,13 @@
     font-size: 10vh;
 }
 
-.currentScoreDivP1, .currentScoreDivP2 {
+.currentScoreDivP1,
+.currentScoreDivP2 {
     position: absolute;
     height: 150px;
     width: 200px;
-    background: rgb(184,0,37);
-    background: linear-gradient(0deg, rgba(184,0,37,1) 0%, rgba(220,20,60,1) 100%);
+    background: rgb(184, 0, 37);
+    background: linear-gradient(0deg, rgba(184, 0, 37, 1) 0%, rgba(220, 20, 60, 1) 100%);
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -58,7 +93,8 @@
     bottom: 25%;
 }
 
-.currentTitleP1, .currentTitleP2 {
+.currentTitleP1,
+.currentTitleP2 {
     margin: 0;
     font-size: 2vh;
     display: flex;
@@ -67,7 +103,8 @@
     margin-bottom: 10px;
 }
 
-.currentScoreP1, .currentScoreP2 {
+.currentScoreP1,
+.currentScoreP2 {
     font-weight: 300;
     font-size: 5vh;
     display: flex;
@@ -84,18 +121,20 @@
     background: rgba(0, 0, 0, 0);
 }
 
-.newGame img, .rollDice img, .hold img {
+.newGame img,
+.rollDice img,
+.hold img {
     margin-bottom: 5px;
 }
 
 .dice {
     height: 150px;
     width: 150px;
-    background:  whitesmoke;
+    background: whitesmoke;
     position: absolute;
     left: -75px;
     top: 0;
-    bottom: 25%;
+    bottom: 5%;
     margin-top: auto;
     margin-bottom: auto;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px;
@@ -105,7 +144,7 @@
     border-radius: 50%;
     height: 20px;
     width: 20px;
-    background: linear-gradient(0deg, rgba(184,0,37,1) 0%, rgba(220,20,60,1) 100%);
+    background: linear-gradient(0deg, rgba(184, 0, 37, 1) 0%, rgba(220, 20, 60, 1) 100%);
 }
 
 .animationIn {
@@ -117,13 +156,23 @@
 }
 
 @keyframes fadeoutIn {
-    from {background: black;}
-    to {background: whitesmoke;}
+    from {
+        background: black;
+    }
+
+    to {
+        background: whitesmoke;
+    }
 }
 
 @keyframes fadeoutOut {
-    from {background: black;}
-    to {background: whitesmoke;}
+    from {
+        background: black;
+    }
+
+    to {
+        background: whitesmoke;
+    }
 }
 
 .dice .one {
@@ -192,5 +241,3 @@
     border: 0;
     background: rgba(0, 0, 0, 0);
 }
-
-

@@ -12,8 +12,13 @@ const currentPointP1 = document.querySelector(".currentScoreP1");
 const currentPointP2 = document.querySelector(".currentScoreP2");
 const globalScoreP1 = document.querySelector(".globalScoreP1");
 const globalScoreP2 = document.querySelector(".globalScoreP2");
+const newGame = document.querySelector(".newGame")
+const titleP1 = document.querySelector(".TitleP1");
+const titleP2 = document.querySelector(".TitleP2");
 let currentPointOfCurrentPlayer = currentPointP1;
 let globalPointOfCurrentPlayer = globalScoreP1;
+
+titleP1.className = titleP1.className + " borderAnimation";
 
 function refresh() {
     circleOne.style.display = "none";
@@ -33,9 +38,13 @@ function changePlayer() {
     if (currentPointOfCurrentPlayer == currentPointP1) {
         currentPointOfCurrentPlayer = currentPointP2;
         globalPointOfCurrentPlayer = globalScoreP2;
+        titleP1.className = "TitleP1"
+        titleP2.className = titleP2.className + " borderAnimation";
     } else if (currentPointOfCurrentPlayer == currentPointP2) {
         currentPointOfCurrentPlayer = currentPointP1;
         globalPointOfCurrentPlayer = globalScoreP1;
+        titleP2.className = "TitleP2"
+        titleP1.className = titleP1.className + " borderAnimation";
     }
 }
 
@@ -50,30 +59,25 @@ function displayDiceCircle() {
     refresh();
     const diceNumber = randomNumber(1, 6);
     if (diceNumber == 1) {
-        console.log("1");
         circleFour.style.display = "block";
         currentPointOfCurrentPlayer.textContent = 0;
         changePlayer();
     } else if (diceNumber == 2) {
-        console.log("2");
         circleThree.style.display = "block";
         circleFive.style.display = "block";
         currentPointOfCurrentPlayer.textContent = Number(currentPointOfCurrentPlayer.textContent) + 2;
     } else if (diceNumber == 3) {
-        console.log("3");
         circleThree.style.display = "block";
         circleFour.style.display = "block";
         circleFive.style.display = "block";
         currentPointOfCurrentPlayer.textContent = Number(currentPointOfCurrentPlayer.textContent) + 3;
     } else if (diceNumber == 4) {
-        console.log("4");
         circleOne.style.display = "block";
         circleThree.style.display = "block";
         circleFive.style.display = "block";
         circleSeven.style.display = "block";
         currentPointOfCurrentPlayer.textContent = Number(currentPointOfCurrentPlayer.textContent) + 4;
     } else if (diceNumber == 5) {
-        console.log("5");
         circleOne.style.display = "block";
         circleThree.style.display = "block";
         circleFour.style.display = "block";
@@ -81,7 +85,6 @@ function displayDiceCircle() {
         circleSeven.style.display = "block";
         currentPointOfCurrentPlayer.textContent = Number(currentPointOfCurrentPlayer.textContent) + 5;
     } else if (diceNumber == 6) {
-        console.log("6");
         circleOne.style.display = "block";
         circleTwo.style.display = "block";
         circleThree.style.display = "block";
@@ -95,8 +98,23 @@ function displayDiceCircle() {
 function holdPoint() {
     globalPointOfCurrentPlayer.textContent = Number(globalPointOfCurrentPlayer.textContent) + Number(currentPointOfCurrentPlayer.textContent);
     currentPointOfCurrentPlayer.textContent = 0;
-    changePlayer(currentPointP1, currentPointP2);
+    changePlayer();
+}
+
+function launchNewGame() {
+    refresh()
+    currentPointP1.textContent = 0;
+    currentPointP2.textContent = 0;
+    globalScoreP1.textContent = 0;
+    globalScoreP2.textContent = 0;
+    currentPointOfCurrentPlayer = currentPointP1;
+    globalPointOfCurrentPlayer = globalScoreP1;
+    titleP1.className = titleP1.className + " borderAnimation";
+    titleP2.className = "TitleP2"
 }
 
 rollDice.addEventListener("click", displayDiceCircle);
 hold.addEventListener("click", holdPoint);
+newGame.addEventListener("click", launchNewGame)
+
+console.log(currentPointP1.textContent)
