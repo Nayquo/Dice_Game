@@ -105,8 +105,25 @@
     border-radius: 50%;
     height: 20px;
     width: 20px;
-    background: rgb(184,0,37);
     background: linear-gradient(0deg, rgba(184,0,37,1) 0%, rgba(220,20,60,1) 100%);
+}
+
+.animationIn {
+    animation: .7s linear fadeoutIn;
+}
+
+.animationOut {
+    animation: .7s linear fadeoutOut;
+}
+
+@keyframes fadeoutIn {
+    from {background: black;}
+    to {background: whitesmoke;}
+}
+
+@keyframes fadeoutOut {
+    from {background: black;}
+    to {background: whitesmoke;}
 }
 
 .dice .one {
