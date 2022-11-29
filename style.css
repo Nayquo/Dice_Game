@@ -34,7 +34,7 @@ html {
     right: 0;
     top: 20%;
     text-align: center;
-    font-size: 7vh;
+    font-size: 3.5rem;
     display: flex;
     justify-content: center;
 }
@@ -76,7 +76,7 @@ html {
     right: 0;
     top: 27.5%;
     text-align: center;
-    font-size: 10vh;
+    font-size: 6rem;
 }
 
 .currentScoreDivP1,
@@ -96,7 +96,7 @@ html {
 .currentTitleP1,
 .currentTitleP2 {
     margin: 0;
-    font-size: 2vh;
+    font-size: 2rem;
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -106,7 +106,7 @@ html {
 .currentScoreP1,
 .currentScoreP2 {
     font-weight: 300;
-    font-size: 5vh;
+    font-size: 3rem;
     display: flex;
     justify-content: center;
     color: whitesmoke;
@@ -240,4 +240,34 @@ html {
     bottom: 175px;
     border: 0;
     background: rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width: 920px) {
+    .hold {
+        bottom: 50px;
+    }
+    .rollDice{
+        bottom: 125px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .TitleP1, .TitleP2 {
+        top: 10%;
+    }
+    .globalScoreP1, .globalScoreP2 {
+        top: 22.5%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .TitleP1, .TitleP2 {
+        font-size: 2.5rem;
+    }
+    .globalScoreP1, .globalScoreP2 {
+        top: 17.5%;
+    }
+    .dice {
+        bottom: 15%;
+    }
 }
