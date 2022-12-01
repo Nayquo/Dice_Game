@@ -36,7 +36,7 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 function changePlayer() {
-    if (globalPointOfCurrentPlayer.textContent >= 10) {
+    if (globalPointOfCurrentPlayer.textContent >= 100) {
         winnerScreen.className = " winnerScreen"
         winnerScreen.textContent = currentPlayer.textContent + " WIN"
     }

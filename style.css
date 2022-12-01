@@ -132,6 +132,7 @@ html {
 }
 
 .middlePart .newGame {
+    color: black;
     position: absolute;
     z-index: 500;
 }
@@ -141,9 +142,9 @@ html {
     width: 150px;
     background: whitesmoke;
     position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 300px;
     left: 0;
     right: 0;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px;
@@ -240,6 +241,7 @@ html {
     bottom: 250px;
     border: 0;
     background: rgba(0, 0, 0, 0);
+    color: black;
 }
 
 .hold {
@@ -249,6 +251,7 @@ html {
     bottom: 175px;
     border: 0;
     background: rgba(0, 0, 0, 0);
+    color: black;
 }
 
 @media screen and (max-width: 920px) {
@@ -271,16 +274,25 @@ html {
         bottom: 20%;
     }
     .currentScoreDivP1, .currentScoreDivP2 {
-        bottom: 30%;
+        bottom: 25%;
     }
     .hold {
-        bottom: 150px;
+        bottom: 10px;
     }
     .rollDice{
-        bottom: 200px;
+        bottom: 60px;
     }
     .TitleP1, .TitleP2 {
         font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-height: 740px) {
+    .hold {
+        bottom: 50px;
+    }
+    .rollDice{
+        bottom: 100px;
     }
 }
 
