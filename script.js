@@ -15,8 +15,10 @@ const globalScoreP2 = document.querySelector(".globalScoreP2");
 const newGame = document.querySelector(".newGame")
 const titleP1 = document.querySelector(".TitleP1");
 const titleP2 = document.querySelector(".TitleP2");
+const winnerScreen = document.querySelector("#winnerScreen")
 let currentPointOfCurrentPlayer = currentPointP1;
 let globalPointOfCurrentPlayer = globalScoreP1;
+let currentPlayer = titleP1;
 
 titleP1.className = titleP1.className + " borderAnimation";
 
@@ -33,14 +35,19 @@ function refresh() {
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 function changePlayer() {
+    if (globalPointOfCurrentPlayer.textContent >= 10) {
+        winnerScreen.className = " winnerScreen"
+        winnerScreen.textContent = currentPlayer.textContent + " WIN"
+    }
     if (currentPointOfCurrentPlayer == currentPointP1) {
+        currentPlayer = titleP2;
         currentPointOfCurrentPlayer = currentPointP2;
         globalPointOfCurrentPlayer = globalScoreP2;
         titleP1.className = "TitleP1"
         titleP2.className = titleP2.className + " borderAnimation";
     } else if (currentPointOfCurrentPlayer == currentPointP2) {
+        currentPlayer = titleP1;
         currentPointOfCurrentPlayer = currentPointP1;
         globalPointOfCurrentPlayer = globalScoreP1;
         titleP2.className = "TitleP2"
@@ -102,6 +109,7 @@ function holdPoint() {
 }
 
 function launchNewGame() {
+    console.log("test")
     refresh()
     currentPointP1.textContent = 0;
     currentPointP2.textContent = 0;
@@ -110,11 +118,15 @@ function launchNewGame() {
     currentPointOfCurrentPlayer = currentPointP1;
     globalPointOfCurrentPlayer = globalScoreP1;
     titleP1.className = titleP1.className + " borderAnimation";
-    titleP2.className = "TitleP2"
+    titleP2.className = "TitleP2";
+    currentPlayer = titleP1;
+    if(winnerScreen.className == " winnerScreen"){
+        currentPlayer = titleP1;
+        winnerScreen.className = "";
+        winnerScreen.textContent = "";
+    }
 }
 
 rollDice.addEventListener("click", displayDiceCircle);
 hold.addEventListener("click", holdPoint);
-newGame.addEventListener("click", launchNewGame)
-
-console.log(currentPointP1.textContent)
+newGame.addEventListener("click", launchNewGame);

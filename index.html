@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="winnerScreen">
+    </div>
     <div class="divP1">
         <h2 class="TitleP1">PLAYER 1</h2>
         <p class="globalScoreP1">0</p>
@@ -23,9 +25,12 @@
         <div class="currentScoreDivP2">
             <p class="currentTitleP2">CURRENT</p>
             <p class="currentScoreP2">0</p>
+        </div>
     </div>
     <div class="middlePart">
         <button class="newGame"><img height="25px" src="images/add-svg.svg" alt="Add icon"> NEW GAME</button>
+        <button class="rollDice"><img height="25px" src="images/circle_arrow.svg" alt="Hold arrow"> ROLL DICE</button>
+        <button class="hold"><img height="25px" src="images/square_arrow.svg" alt=""> HOLD</button>
     </div>
     <div class="dice">
         <div class="one"></div>
@@ -36,8 +41,6 @@
         <div class="six"></div>
         <div class="seven"></div>
     </div>
-    <button class="rollDice"><img height="25px" src="images/circle_arrow.svg" alt="Hold arrow"> ROLL DICE</button>
-    <button class="hold"><img height="25px" src="images/square_arrow.svg" alt=""> HOLD</button>
 </body>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>

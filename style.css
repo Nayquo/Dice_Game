@@ -7,12 +7,12 @@ html {
     padding: 0;
     font-family: 'Lato', sans-serif;
     letter-spacing: 3px;
-    position: relative;
+    touch-action: manipulation;
 }
 
 .divP1 {
     float: left;
-    background: rgba(128, 128, 128, 0.20);
+    background: rgba(128, 128, 128, 0.25);
     width: 50%;
     height: 100vh;
     position: relative;
@@ -112,19 +112,28 @@ html {
     color: whitesmoke;
 }
 
-.newGame {
+.middlePart .newGame {
     font-size: 1.5rem;
     position: absolute;
-    left: -100px;
     margin-top: 5%;
     border: 0;
     background: rgba(0, 0, 0, 0);
 }
 
-.newGame img,
-.rollDice img,
-.hold img {
+.middlePart button{
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.middlePart img {
     margin-bottom: 5px;
+}
+
+.middlePart .newGame {
+    position: absolute;
+    z-index: 500;
 }
 
 .dice {
@@ -132,11 +141,11 @@ html {
     width: 150px;
     background: whitesmoke;
     position: absolute;
-    left: -75px;
+    margin: auto;
     top: 0;
     bottom: 5%;
-    margin-top: auto;
-    margin-bottom: auto;
+    left: 0;
+    right: 0;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px;
 }
 
@@ -256,18 +265,48 @@ html {
         top: 10%;
     }
     .globalScoreP1, .globalScoreP2 {
-        top: 22.5%;
+        top: 15%;
     }
-}
-
-@media screen and (max-width: 430px) {
+    .dice {
+        bottom: 20%;
+    }
+    .currentScoreDivP1, .currentScoreDivP2 {
+        bottom: 30%;
+    }
+    .hold {
+        bottom: 150px;
+    }
+    .rollDice{
+        bottom: 200px;
+    }
     .TitleP1, .TitleP2 {
         font-size: 2.5rem;
     }
-    .globalScoreP1, .globalScoreP2 {
-        top: 17.5%;
+}
+
+.winnerScreen {
+    height: 100%;
+    width: 100%;
+    background: red;
+    position: absolute;
+    z-index: 1;
+    background: rgb(206,237,189);
+    background: radial-gradient(circle, rgba(206,237,189,1) 0%, rgba(65,184,0,1) 100%);
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    animation: linear 1s winnerAnimation;
+    text-align: center;
+}
+
+@keyframes winnerAnimation {
+    from{
+        opacity: 0;
     }
-    .dice {
-        bottom: 15%;
+    to{
+        opacity: 1;
     }
 }
+
