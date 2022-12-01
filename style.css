@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
 
-*, body, html {
+*,
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
     letter-spacing: 3px;
-    position: relative;
+    touch-action: manipulation;
 }
 
 .divP1 {
     float: left;
-    background: rgba(128, 128, 128, 0.20);
+    background: rgba(128, 128, 128, 0.25);
     width: 50%;
     height: 100vh;
     position: relative;
@@ -22,19 +24,51 @@
     float: right;
     width: 50%;
     height: 100vh;
-    background: whitesmoke;
+    background: rgb(245, 245, 245);
 }
 
-.TitleP1, .TitleP2 {
+.TitleP1,
+.TitleP2 {
     position: absolute;
     left: 0;
     right: 0;
     top: 20%;
     text-align: center;
-    font-size: 7vh;
+    font-size: 3.5rem;
+    display: flex;
+    justify-content: center;
 }
 
-.globalScoreP1, .globalScoreP2 {
+.borderAnimation {
+    --border-size: 3px;
+    --border-angle: 0turn;
+    background-image: conic-gradient(from var(--border-angle),
+            rgb(245, 245, 245),
+            rgb(245, 245, 245) 50%,
+            rgb(245, 245, 245)),
+        conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+    background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)),
+        cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    animation: bg-spin 3s linear infinite;
+}
+
+@keyframes bg-spin {
+    to {
+        --border-angle: 1turn;
+    }
+}
+
+@property --border-angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+}
+
+.globalScoreP1,
+.globalScoreP2 {
     color: crimson;
     font-weight: 300;
     position: absolute;
@@ -42,15 +76,16 @@
     right: 0;
     top: 27.5%;
     text-align: center;
-    font-size: 10vh;
+    font-size: 6rem;
 }
 
-.currentScoreDivP1, .currentScoreDivP2 {
+.currentScoreDivP1,
+.currentScoreDivP2 {
     position: absolute;
     height: 150px;
     width: 200px;
-    background: rgb(184,0,37);
-    background: linear-gradient(0deg, rgba(184,0,37,1) 0%, rgba(220,20,60,1) 100%);
+    background: rgb(184, 0, 37);
+    background: linear-gradient(0deg, rgba(184, 0, 37, 1) 0%, rgba(220, 20, 60, 1) 100%);
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -58,44 +93,60 @@
     bottom: 25%;
 }
 
-.currentTitleP1, .currentTitleP2 {
+.currentTitleP1,
+.currentTitleP2 {
     margin: 0;
-    font-size: 2vh;
+    font-size: 2rem;
     display: flex;
     justify-content: center;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.currentScoreP1, .currentScoreP2 {
+.currentScoreP1,
+.currentScoreP2 {
     font-weight: 300;
-    font-size: 5vh;
+    font-size: 3rem;
     display: flex;
     justify-content: center;
     color: whitesmoke;
 }
 
-.newGame {
+.middlePart .newGame {
     font-size: 1.5rem;
     position: absolute;
-    left: -100px;
     margin-top: 5%;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
 }
 
-.newGame img, .rollDice img, .hold img {
+.middlePart button{
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.middlePart img {
     margin-bottom: 5px;
+}
+
+.middlePart .newGame {
+    color: black;
+    position: absolute;
+    z-index: 500;
 }
 
 .dice {
     height: 150px;
     width: 150px;
-    background:  whitesmoke;
+    background: whitesmoke;
     position: absolute;
-    left: -75px;
-    top: 0;
-    bottom: 25%;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    top: 300px;
+    left: 0;
+    right: 0;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px;
 }
 
@@ -103,47 +154,81 @@
     border-radius: 50%;
     height: 20px;
     width: 20px;
-    background: rgb(184,0,37);
-    background: linear-gradient(0deg, rgba(184,0,37,1) 0%, rgba(220,20,60,1) 100%);
+    background: linear-gradient(0deg, rgba(184, 0, 37, 1) 0%, rgba(220, 20, 60, 1) 100%);
+}
+
+.animationIn {
+    animation: .7s linear fadeoutIn;
+}
+
+.animationOut {
+    animation: .7s linear fadeoutOut;
+}
+
+@keyframes fadeoutIn {
+    from {
+        background: black;
+    }
+
+    to {
+        background: whitesmoke;
+    }
+}
+
+@keyframes fadeoutOut {
+    from {
+        background: black;
+    }
+
+    to {
+        background: whitesmoke;
+    }
 }
 
 .dice .one {
+    display: none;
     position: absolute;
     left: 20px;
     top: 20px;
 }
 
 .dice .two {
+    display: none;
     position: absolute;
     top: 65px;
     left: 20px;
 }
 
 .dice .three {
+    display: none;
     position: absolute;
     bottom: 20px;
     left: 20px;
 }
 
 .dice .four {
+    display: none;
     position: absolute;
     top: 65px;
     left: 65px;
 }
 
 .dice .five {
+    display: none;
     position: absolute;
     right: 20px;
     top: 20px;
 }
 
 .dice .six {
+    display: none;
     position: absolute;
     top: 65px;
     right: 20px;
 }
 
 .dice .seven {
+    display: none;
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -154,6 +239,9 @@
     position: absolute;
     left: -100px;
     bottom: 250px;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
+    color: black;
 }
 
 .hold {
@@ -161,6 +249,76 @@
     position: absolute;
     left: -70px;
     bottom: 175px;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
+    color: black;
 }
 
+@media screen and (max-width: 920px) {
+    .hold {
+        bottom: 50px;
+    }
+    .rollDice{
+        bottom: 125px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .TitleP1, .TitleP2 {
+        top: 10%;
+    }
+    .globalScoreP1, .globalScoreP2 {
+        top: 15%;
+    }
+    .dice {
+        bottom: 20%;
+    }
+    .currentScoreDivP1, .currentScoreDivP2 {
+        bottom: 25%;
+    }
+    .hold {
+        bottom: 10px;
+    }
+    .rollDice{
+        bottom: 60px;
+    }
+    .TitleP1, .TitleP2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-height: 740px) {
+    .hold {
+        bottom: 50px;
+    }
+    .rollDice{
+        bottom: 100px;
+    }
+}
+
+.winnerScreen {
+    height: 100%;
+    width: 100%;
+    background: red;
+    position: absolute;
+    z-index: 1;
+    background: rgb(206,237,189);
+    background: radial-gradient(circle, rgba(206,237,189,1) 0%, rgba(65,184,0,1) 100%);
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    animation: linear 1s winnerAnimation;
+    text-align: center;
+}
+
+@keyframes winnerAnimation {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
 
